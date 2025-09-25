@@ -23,7 +23,7 @@ class PatientForm(StyleFormMixin, ModelForm):
 
 
 class PatientModeratorForm(StyleFormMixin, ModelForm):
-    """Специальная форма для модератора сайта"""
+    """ Специальная форма для модератора сайта """
 
     class Meta:
         model = Patient

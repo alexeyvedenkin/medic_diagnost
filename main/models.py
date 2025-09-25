@@ -32,7 +32,6 @@ class Patient(models.Model):
     )
     email = models.EmailField(
         verbose_name="Почта",
-        **NULLABLE,
     )
     birth_date = models.DateField(
         verbose_name="Дата рождения",

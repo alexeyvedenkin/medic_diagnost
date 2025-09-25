@@ -3,19 +3,14 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
-    """
-    Кастомный менеджер моделей, в котором электронная почта является уникальным идентификатором
-    для аутентификации вместо имени пользователя.
-    """
+    """ Кастомный менеджер моделей, идентификации пользователя по электронной почте """
 
     def __init__(self, model=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.model = model  # Сохраняем модель пользователя
 
     def create_user(self, email, password, first_name=None, last_name=None, **extra_fields):
-        """
-        Создает и сохраняет пользователя с указанным адресом электронной почты и паролем.
-        """
+        """ Создает и сохраняет пользователя с указанным адресом электронной почты и паролем """
         if not email:
             raise ValueError(_("Необходимо указать e-mail"))
 
