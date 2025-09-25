@@ -27,11 +27,6 @@ class User(AbstractUser):
         verbose_name="Город",
         **NULLABLE,
     )
-    token = models.CharField(
-        max_length=100,
-        verbose_name="Token",
-        ** NULLABLE,
-    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
