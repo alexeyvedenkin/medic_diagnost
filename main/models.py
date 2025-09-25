@@ -5,7 +5,7 @@ NULLABLE = {"null": True, "blank": True}
 
 
 class Patient(models.Model):
-    """Модель для хранения информации о пациентах"""
+    """ Модель для хранения информации о пациентах """
 
     first_name = models.CharField(
         max_length=100,
@@ -68,7 +68,7 @@ class Patient(models.Model):
 
 
 class Doctor(models.Model):
-    """Модель для хранения информации о врачах"""
+    """ Модель для хранения информации о врачах """
 
     name = models.CharField(
         max_length=100,
@@ -115,7 +115,7 @@ class Doctor(models.Model):
 
 
 class Appoint(models.Model):
-    """Модель для хранения информациио записи пациентов на прием"""
+    """ Модель для хранения информации о записи пациентов на прием """
 
     patient = models.ForeignKey(
         Patient,
@@ -154,7 +154,7 @@ class Appoint(models.Model):
 
 
 class Result(models.Model):
-    """Модель для хранения результатов обследования"""
+    """ Модель для хранения результатов обследования """
 
     patient = models.ForeignKey(
         Patient,
