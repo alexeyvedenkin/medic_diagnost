@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     "django_extensions",
     "drf_yasg",
 
+    "main",
+    "services",
     "users",
 
 ]
