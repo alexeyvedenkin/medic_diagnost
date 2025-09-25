@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+     <p>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'main:result_create'%}" role="button">Добавить результаты</a>
+    </p>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for object in object_list %}
+                <div class="col-4">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+
+                        <p class="card-text">Пациент: {{ object.patient }}</p>
+                        <p class="card-text">Назначение: {{ object.medical_test}}</p>
+                        <p class="card-text">Результат: {{ object.test_result}}</p>
+                        <p class="card-text">Ед. измерения: {{ object.units_of_measurement}}</p>
+                        <p class="card-text">Норма: {{ object.reference_value}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="text-left">Дата: {{ object.date}}</p>
+                                <div class="btn-group">
+                                    <a href="{% url 'main:result_detail' object.pk %}"
+                                       class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                                    <a href="{% url 'main:result_update' object.pk %}" type="button"
+                                       class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                    <a href="{% url 'main:result_confirm_delete' object.pk %}" type="button"
+                                       class="btn btn-sm btn-outline-secondary">Удалить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
