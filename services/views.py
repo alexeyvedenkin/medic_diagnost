@@ -10,6 +10,7 @@ from django.views.generic import (
 from services.models import Service, Contact, About
 from services.forms import ServiceForm
 
+
 class ServiceListView(ListView):
     model = Service
     fields = ["id", "name", "description", "price"]
@@ -33,7 +34,6 @@ class ServiceCreateView(CreateView):
 class ServiceDetailView(DetailView):
     model = Service
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Подробнее о услуге"
@@ -49,7 +49,6 @@ class ServiceUpdateView(UpdateView):
     form_class = ServiceForm
     # fields = "__all__"
     success_url = reverse_lazy("services:service_list")
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,7 +68,6 @@ class ServiceDeleteView(DeleteView):
     success_url = reverse_lazy("services:service_list")
 
 
-
 class AboutListView(ListView):
     model = About
     fields = "__all__"
@@ -87,5 +85,3 @@ class ContactsPageViews(CreateView):
     success_url = reverse_lazy("services:contact")
     template_name = "services/contact.html"
     extra_context = {"title": "Сохранить контакт"}
-
-

@@ -22,4 +22,3 @@ urlpatterns = [
     path("contact/", ContactsPageViews.as_view(), name="contact"),
     path("about/", AboutListView.as_view(), name="about_list"),
 ]
-

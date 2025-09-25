@@ -41,7 +41,6 @@ class PatientDetailView(DetailView):
     """
     model = Patient
 
-
     def get_context_data(self, **kwargs):
         """ Передача дополнительного контента в шаблон"""
         context = super().get_context_data(**kwargs)
@@ -148,7 +147,6 @@ class PatientDeleteView(LoginRequiredMixin, DeleteView):
     model = Patient
     success_url = reverse_lazy("main:patient_list")
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         patient_item = self.get_object()
@@ -169,14 +167,13 @@ class AppointListView(LoginRequiredMixin, ListView):
     model = Appoint
     fields = ["patient", "doctor"]
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = f"Записи пациента"
+        context["title"] = "Записи пациента"
         return context
 
     def get_queryset(self, queryset=None):
-        """Запись на прием видит только тот, кто ее создал или модератор"""
+        """ Запись на прием видит только тот, кто ее создал или модератор """
         queryset = super().get_queryset()
         user = self.request.user
         if not user.is_superuser and not user.groups.filter(name="moderator"):
@@ -194,10 +191,9 @@ class AppointCreateView(LoginRequiredMixin, CreateView):
     form_class = AppointForm
     success_url = reverse_lazy("main:appoint_list")
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = f"Новая запись для пациента"
+        context["title"] = "Новая запись для пациента"
         return context
 
 
@@ -227,7 +223,6 @@ class AppointUpdateView(LoginRequiredMixin, UpdateView):
     model = Appoint
     form_class = AppointForm
 
-
     def get_success_url(self):
         return reverse("main:appoint_detail", args=[self.kwargs.get("pk")])
 
@@ -247,12 +242,12 @@ class AppointDeleteView(LoginRequiredMixin, DeleteView):
     model = Appoint
     success_url = reverse_lazy("main:appoint_list")
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         appoint_item = self.get_object()
         context["title"] = (
-            f"Пациент: {appoint_item.patient.last_name} {appoint_item.patient.first_name} {appoint_item.patient.surname}"
+            f"Пациент: {appoint_item.patient.last_name} {appoint_item.patient.first_name} "
+            f"{appoint_item.patient.surname}"
         )
         return context
 
@@ -269,7 +264,6 @@ class DoctorListView(ListView):
     # Оганичим перечень отображаемых полей
     # Остальные в DetailView
     fields = ["name", "specialization", "qualification"]
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -300,7 +294,6 @@ class DoctorUpdateView(LoginRequiredMixin, UpdateView):
     model = Doctor
     form_class = DoctorForm
 
-
     def get_success_url(self):
         """Определяем переход при удачном завершении"""
         return reverse("main:doctor_detail", args=[self.kwargs.get("pk")])
@@ -316,13 +309,9 @@ class DoctorDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("main:doctor_list")
 
 
-
 class ResultListView(LoginRequiredMixin, ListView):
-    """
-    Контроллер отвечает за отображение результатов обследования
-    """
+    """ Контроллер отвечает за отображение результатов обследования """
     model = Result
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

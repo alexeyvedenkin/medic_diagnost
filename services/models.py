@@ -49,7 +49,6 @@ class Contact(models.Model):
         verbose_name_plural = "Контакты"
 
 
-
 class About(models.Model):
     description = models.TextField(verbose_name="Описание", **NULLABLE,)
 

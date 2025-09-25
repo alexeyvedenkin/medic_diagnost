@@ -18,6 +18,3 @@ class ServiceForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Service
         fields = ("service_name", "description", "price")
-
-
-

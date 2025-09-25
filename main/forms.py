@@ -36,7 +36,6 @@ class AppointForm(StyleFormMixin, ModelForm):
         fields = ("patient", "doctor", "appoint_date")
 
 
-
 class DoctorForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Doctor
